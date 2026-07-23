@@ -8,7 +8,7 @@ services:
     ports:
       - "127.0.0.1:8080:8080"
     environment:
-      - SEARXNG_SECRET=0eb4ed5dc2fcfa6829d9b1991e33d7f1f5726fadf41f4ebb8995d7bc881173f5
+      - SEARXNG_SECRET=${SEARXNG_SECRET:?SEARXNG_SECRET must be set}
       - SEARXNG_BASE_URL=http://localhost:8080
     volumes:
       - ./settings.yml:/etc/searxng/settings.yml:ro
