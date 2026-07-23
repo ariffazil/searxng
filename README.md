@@ -7,8 +7,13 @@ Self-hosted meta search engine. Zero API keys. Zero quotas. Zero external billin
 ```bash
 git clone https://github.com/ariffazil/searxng.git
 cd searxng
-docker compose up -d
+docker compose --env-file /root/.secrets/vault.env config
+docker compose --env-file /root/.secrets/vault.env up -d
 ```
+
+The deployment vault is the source of truth for `SEARXNG_SECRET`. On the
+federation VPS, `.env` is an ignored symlink to that vault so plain
+`docker compose` commands use the same launch environment.
 
 ## Usage
 
